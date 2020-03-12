@@ -2,13 +2,25 @@ package com.hackerrank.stocktrade.model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@Entity
 public class Trade {
+	@Id
     private Long id;
     private String type;
+    @OneToOne(fetch=FetchType.EAGER)
     private User user;
     private String symbol;
     private Integer shares;
     private Float price;
+    @JsonFormat
+    (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone="Est (UTC -4)")
     private Timestamp timestamp;
     
     public Trade() {
