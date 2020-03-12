@@ -30,7 +30,7 @@ public class TradesController {
 	public ResponseEntity<?> add(@RequestBody Trade trade){
 		Trade model = tradeService.add(trade);
 		if(model!=null) {
-			return new ResponseEntity<>(HttpStatus.CREATED);
+			return new ResponseEntity<>(model, HttpStatus.CREATED);
 		} else {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
