@@ -51,7 +51,16 @@ public class TradesController {
 	
 	@GetMapping
 	public ResponseEntity<?> getAll() {
-		List<Trade> models = tradeService.getAll();
+		List<Trade> models = tradeService.getAll(null);
 		return new ResponseEntity<>(models, HttpStatus.OK);		
+	}
+	
+	@GetMapping("/users/{userID}")
+	public ResponseEntity<?> getAll(@PathVariable(name = "userID") Long userId) {
+		List<Trade> models = tradeService.getAll(userId);
+		if(models!=null && models.size()>0) {
+			return new ResponseEntity<>(models, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(models, HttpStatus.NOT_FOUND);		
 	}
 }

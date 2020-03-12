@@ -8,5 +8,5 @@ public interface TradeService {
 	public Trade add(Trade trade);
 	public boolean deleteAll();
 	public Trade get(Long id);
-	public List<Trade> getAll();
+	public List<Trade> getAll(Long userId);
 }
